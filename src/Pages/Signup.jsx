@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import Swal from 'sweetalert2';
@@ -10,22 +10,14 @@ import { TextField } from '@mui/material';
 import './Auth.css'
 
 const Signup = () => {
+
     const navigateTo = useNavigate()
-    const checkLogin = () => {
-        const user = localStorage.getItem("user");
-        if (user) {
-            navigateTo('/blogger')
-            return;
-        }
-    }
-    useEffect(() => {
-        checkLogin()
-    }, [])
     const [signupEmail, setSignupEmail] = useState('');
     const [signupPassword, setSignupPassword] = useState('');
     const [signupName, setSignupName] = useState('');
     const [profileImg, setProfileImg] = useState('');
-    const [loader, setLoader] = useState(false)
+    const [loader, setLoader] = useState(false);
+
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
         setLoader(true)
@@ -186,9 +178,9 @@ const Signup = () => {
                         </div>
                     </form>
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex justify-center">
                         <span className="text-gray-600">
-                            Already have account?
+                            Already have an account?
                             <Link to='/login'
                                 type="button"
                                 className="ml-2 text-blue-500 focus:outline-none hover:cursor-pointer"

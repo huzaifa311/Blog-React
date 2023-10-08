@@ -7,21 +7,11 @@ import Header from '../Components/Header'
 import Swal from 'sweetalert2';
 
 const Index = () => {
-  const navigateTo = useNavigate();
-  const checkLogin = () => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      navigateTo('/blogger')
-      return;
-    }
-  }
+  
   useEffect(() => {
     fetchDisplayBlogs()
-    checkLogin()
   }, [])
   const [blogs, setBlogs] = useState([]);
-
-
 
   async function fetchDisplayBlogs() {
     try {

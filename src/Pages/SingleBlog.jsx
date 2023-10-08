@@ -7,12 +7,15 @@ import Swal from 'sweetalert2';
 import { useParams } from 'react-router-dom'
 
 const SingleBlog = () => {
+
     useEffect(() => {
         fetchDisplayBlogs()
     }, [])
+
     const authorInfo = JSON.parse(localStorage.getItem('user'));
     const [blogs, setBlogs] = useState([]);
     const { blogid } = useParams();
+    
     async function fetchDisplayBlogs() {
         try {
             let tempArr = [];

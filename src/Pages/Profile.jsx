@@ -11,23 +11,14 @@ import CircularColor from '../Components/Loader';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
-  const navigateTo = useNavigate();
-  const checkLogin = ()=>{
-    const user = localStorage.getItem('user')
-    if(!user){
-      navigateTo('/login')
-    }
-  }
   
   useEffect(() => {
-    checkLogin()
     fetchDisplayBlogs()
   }, [])
   const authorInfo = JSON.parse(localStorage.getItem('user'));
   
   const [blogs, setBlogs] = useState([]);
   const [loader, setLoader] = useState(false);
-  const showDeleteButton = true;
 
   async function fetchDisplayBlogs() {
     try {
@@ -99,6 +90,7 @@ const Profile = () => {
 
             let blogAuthor = blog?.author;
             const authorName = authorInfo.signupName;
+            const showDeleteButton = true;
             if (authorName === blogAuthor) {
               return <div key={blog.id}>
                 {loader ? <CircularColor /> :

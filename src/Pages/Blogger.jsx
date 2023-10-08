@@ -10,18 +10,10 @@ import Swal from 'sweetalert2';
 
 const Blogger = () => {
   const navigateTo = useNavigate();
-  const checkLogin = () => {
-    const user = localStorage.getItem("user");
-    if (!user) {
-      navigateTo('/login')
-      return;
-    }
-  }
 
   useEffect(() => {
     displayName()
     fetchDisplayBlogs()
-    checkLogin()
   }, [])
   const [userName, setUserName] = useState('');
   const [loader, setLoader] = useState(false);

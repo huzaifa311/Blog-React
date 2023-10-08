@@ -59,6 +59,7 @@ export default function TransitionsModal() {
             )
             // console.log("blog published with id: ", blogPublished.id)
             setOpen(false)
+
         } catch (error) {
             // console.log(error.message);
             Swal.fire({
@@ -103,9 +104,9 @@ export default function TransitionsModal() {
 
                         <Box component={'form'} onSubmit={publishBlog}>
 
-                            <input type="text" placeholder='Title' className='border mt-4 border-stone-500 rounded-lg p-3 w-full' onChange={e => setTitle(e.target.value)} />
+                            <input type="text" placeholder='Title' className='border mt-4 border-stone-500 rounded-lg p-3 w-full' onChange={e => setTitle(e.target.value)} value={title} />
 
-                            <textarea type="text" placeholder='Description¿' className='border h-[120px] my-4 border-stone-500 rounded-lg p-3 w-full' onChange={e => setDesc(e.target.value)} />
+                            <textarea type="text" placeholder='Description¿' className='border h-[120px] my-4 border-stone-500 rounded-lg p-3 w-full' onChange={e => setDesc(e.target.value)} value={desc} />
 
                             <Box sx={{
                                 display: 'flex',

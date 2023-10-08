@@ -12,17 +12,6 @@ import './Auth.css';
 
 const Login = () => {
     const navigateTo = useNavigate();
-    const checkLogin = () => {
-        const user = localStorage.getItem("user");
-        if (user) {
-            navigateTo('/blogger')
-            return;
-        }
-    }
-
-    useEffect(() => {
-        checkLogin()
-    }, [])
 
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
@@ -88,7 +77,7 @@ const Login = () => {
                                 onChange={(e) => setLoginPassword(e.target.value)}
                             />
                         </div>
-                        <div className='flex justify-center'>
+                        <div className='flex justify-center mt-5'>
                             <button
                                 type="submit"
                                 className="bg-purple-700 text-white font-semibold py-2 px-4 rounded hover:bg-purple-800 focus:outline-none focus:ring focus:ring-blue-300 mb-3 flex justify-center"
@@ -97,9 +86,9 @@ const Login = () => {
                         </div>
                     </form>
 
-                    <div className="flex items-center justify-between">
-                        <span className="text-gray-600">
-                            Don't have account?
+                    <div className="flex justify-center mt-2">
+                        <span className="text-gray-600 ">
+                            Don't have an account?
                             <Link to='/signup'
                                 type="button"
                                 className="ml-2 text-blue-500 focus:outline-none hover:cursor-pointer"
