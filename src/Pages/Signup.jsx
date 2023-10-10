@@ -17,6 +17,7 @@ const Signup = () => {
     const [signupName, setSignupName] = useState('');
     const [profileImg, setProfileImg] = useState('');
     const [loader, setLoader] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
@@ -134,7 +135,7 @@ const Signup = () => {
                         <div className="mb-4">
                             <TextField
                                 type="text"
-                                id='outline-basic'
+                                // id='outline-basic'
                                 label="Full Name"
                                 className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-purple-700"
                                 value={signupName}
@@ -145,11 +146,11 @@ const Signup = () => {
                             <label className="block text-gray-600 font-semibold mb-2 md:text-sm">
                                 Upload Profile Image
                             </label>
-                            <input type="file" id="img" name="img" accept="image/*" className='w-full text-sm sm:text-lg p-2 border border-gray-300 rounded focus:outline-none focus:border-purple-700' onChange={e => setProfileImg(e.target)} />
+                            <input type="file" id="img" name="img" accept="image/*" className='w-full text-sm sm:text-lg p-2 border  hover:border-gray-600 border-gray-300 rounded focus:outline-none focus:border-purple-700' onChange={e => setProfileImg(e.target)} />
                         </div>
                         <div className="mb-5">
                             <TextField
-                                id='outline-basic'
+                                // id='outline-basic'
                                 type="email"
                                 className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-purple-700"
                                 label="Email"
@@ -157,15 +158,16 @@ const Signup = () => {
                                 onChange={(e) => setSignupEmail(e.target.value)}
                             />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-4 relative">
                             <TextField
-                                id='outline-basic'
-                                type="password"
+                                // id='outline-basic'
+                                type={showPassword? 'text' : 'password'}
                                 className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-purple-700"
                                 label="Password"
                                 value={signupPassword}
                                 onChange={(e) => setSignupPassword(e.target.value)}
                             />
+                            <button className='mt-2 absolute right-2 top-2 text-blue-500 focus:outline-none hover:cursor-pointer bg-white' type='button' onClick={()=>setShowPassword(!showPassword)}>{showPassword ? 'hide' : 'show' }</button>
                         </div>
                         <div className='flex justify-center'>
                             <button

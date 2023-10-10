@@ -16,6 +16,7 @@ const Login = () => {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [loader, setLoader] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
@@ -67,15 +68,16 @@ const Login = () => {
                                 onChange={(e) => setLoginEmail(e.target.value)}
                             />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-4 relative">
                             <TextField
                                 id='outline-basic'
                                 label='Password'
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-purple-700"
                                 value={loginPassword}
                                 onChange={(e) => setLoginPassword(e.target.value)}
                             />
+                            <button className='mt-2 absolute right-2 top-2 text-blue-500 focus:outline-none hover:cursor-pointer bg-white' type='button' onClick={()=>setShowPassword(!showPassword)}>{showPassword ? "hide" : "show"}</button>
                         </div>
                         <div className='flex justify-center mt-5'>
                             <button

@@ -19,7 +19,7 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 2,
-    borderRadius : '20px'
+    borderRadius: '20px'
 };
 
 export default function TransitionsModal() {
@@ -37,6 +37,16 @@ export default function TransitionsModal() {
 
     const publishBlog = async (e) => {
         e.preventDefault()
+
+        if (title === "" && desc === "") {
+            setOpen(false)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text:  "Cannot Publish an Empty Blog",
+            })
+            return
+        }
         // console.log('title : ', title, " desc : ", desc);
         const author = authorInfo.signupName
         const authorImage = authorInfo.imageUrl
@@ -82,7 +92,7 @@ export default function TransitionsModal() {
             }
             }>Publish Blog</Button>
             <Modal
-                
+
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 open={open}
