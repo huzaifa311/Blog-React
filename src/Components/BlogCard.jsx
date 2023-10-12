@@ -7,7 +7,7 @@ const BlogCard = (
     return (
         <div className="bg-white shadow-2xl border-[1px] border-gray-300 rounded-lg overflow-hidden w-[97%] sm:w-[600px] h-full min-h-[370px]">
 
-            <div className="px-6 py-4 flex justify-between bg-violet-300 ">
+            <div className="px-6 py-4 flex justify-between bg-gray-300 ">
 
                 <div className="flex items-center">
                     <img
