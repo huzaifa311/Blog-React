@@ -24,9 +24,8 @@ const Signup = () => {
         setLoader(true)
         // console.log(signupPassword, signupEmail, signupName, profileImg.files[0]);
 
-        const imageUrl = await uploadImage(profileImg.files[0])
         try {
-            if (!signupName || !signupEmail || !signupPassword) {
+            if (!signupName || !signupEmail || !signupPassword || !profileImg) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -34,16 +33,9 @@ const Signup = () => {
                 })
                 return
             }
-            if (!profileImg) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Upload an Image for your Profile',
-                })
-                return
-            }
             const userAuth = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
             const uid = userAuth.user.uid
+            const imageUrl = await uploadImage(profileImg.files[0])
 
             const imageRef = ref(storage, `profileImages/${uid}`);
             const userObj = {
